@@ -1,0 +1,65 @@
+package com.Encapsulation;
+
+public class CopyCons {
+    
+    public static void main(String[] args) {
+        int[] marks = {85, 65, 78};
+        Student s = new Student("Jeewan", 123, "abc", marks);
+        
+        System.out.println("Original Student:");
+        System.out.println("Name: " + s.name);
+        System.out.println("Roll: " + s.roll);
+        System.out.println("Password: " + s.password);
+        System.out.print("Marks: ");
+        for (int mark : s.marks) {
+            System.out.print(mark + " ");
+        }
+        
+        // Modify the original student's marks
+        s.marks[2] = 100;
+        System.out.println();
+        
+        Student s1 = new Student(s);  // Using the deep copy constructor
+        System.out.println("Copied Student:");
+        System.out.println("Name: " + s1.name);
+        System.out.println("Roll: " + s1.roll);
+        System.out.println("Password: " + s1.password);
+        System.out.print("Marks: ");
+        for (int mark : s1.marks) {  // s1.marks should not reflect the change in s
+            System.out.print(mark + " ");
+        }
+        System.out.println();
+    }
+    
+}
+
+class Student {
+    String name;
+    int roll;
+    String password;
+    int[] marks;
+
+    // Deep copy constructor
+    Student(Student s) {
+        this.name = s.name;
+        this.roll = s.roll;
+        this.password = s.password;
+        // Deep copy of the marks array
+        this.marks = new int[s.marks.length];
+        for (int i = 0; i < s.marks.length; i++) {
+            this.marks[i] = s.marks[i];
+        }
+    }
+    
+    // Parameterized constructor
+    Student(String name, int roll, String password, int[] marks) {
+        this.name = name;
+        this.roll = roll;
+        this.password = password;
+        // Deep copy of the marks array
+        this.marks = new int[marks.length];
+        for (int i = 0; i < marks.length; i++) {
+            this.marks[i] = marks[i];
+        }
+    }
+}

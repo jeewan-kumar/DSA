@@ -1,0 +1,49 @@
+package com.Encapsulation;
+
+public class CopyCons {
+	
+	public static void main(String[] args) {
+		int[] marks = {85,65,78};
+		int[] mark1 = {80,60,70};
+		Student s = new Student("Jeewan", 123, "abc", marks);
+		 System.out.println("Name: " + s.name);
+	        System.out.println("Roll: " + s.roll);
+	        System.out.println("Password: " + s.password);
+	        System.out.print("Marks: ");
+	        for (int mark : s.marks) {
+	            System.out.print(mark + " ");
+	        }
+	        
+	        Student s1 = new Student("Jeewan kumar", 1234, "abcd", mark1);
+			 System.out.println("Name: " + s1.name);
+		        System.out.println("Roll: " + s1.roll);
+		        System.out.println("Password: " + s1.password);
+		        System.out.print("Marks: ");
+		        for (int mark : s1.mark1) {
+		            System.out.print(mark + " ");
+		        }		
+	}
+}
+
+class Student{
+	String name;
+	int roll;
+	String password;
+	int marks[];
+	Student (Student s){
+		this.name = s.name;
+		this.roll = s.roll;
+		this.password = s.password;
+		this.marks = s.marks;
+		
+	}
+	
+	Student(String name,int roll, String password, int marks[]) {
+		this.name = name;
+		this.roll = roll;
+		this.password =password;
+		this.marks = marks;
+	}
+	
+	
+}
